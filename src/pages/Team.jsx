@@ -3,7 +3,7 @@ import { DataGrid } from '@mui/x-data-grid';
 import Box from '@mui/material/Box';
 
 import { Typography, useTheme } from '@mui/material';
-import Header from '../assets/shared/Header';
+import Header from '../shared/Header';
 
 
 

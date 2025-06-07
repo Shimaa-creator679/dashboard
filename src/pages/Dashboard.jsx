@@ -4,7 +4,7 @@ import React from 'react'
 import Row1 from '../components/Row1'
 import Row2 from '../components/Row2'
 import Row3 from '../components/Row3'
-import Header from '../assets/shared/Header'
+import Header from '../shared/Header'
 
 const Dashboard = () => {
   return (

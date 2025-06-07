@@ -1,6 +1,6 @@
 import { Box, Typography, useTheme } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
-import Header from '../assets/shared/Header';
+import Header from '../shared/Header';
 
 
 
