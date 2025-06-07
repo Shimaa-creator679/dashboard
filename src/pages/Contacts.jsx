@@ -100,11 +100,20 @@ const Contacts = () => {
   return (
     <div>
       <Header title={"Contacts"} subtitle={"Manage your contacts"}/>
-           <Box sx={{ height:"600", width: '80%',mx:"auto" }}>
+           <Box sx={{ height:"600", width: '100%', }}>
       <DataGrid
-        rows={rows}
+           rows={rows}
         columns={columns}
-        showToolbar
+        initialState={{
+          pagination: {
+            paginationModel: {
+              pageSize: 5,
+            },
+          },
+        }}
+        pageSizeOptions={[5]}
+        checkboxSelection
+        disableRowSelectionOnClick
       />
     </Box>
     </div>

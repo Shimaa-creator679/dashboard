@@ -1,8 +1,20 @@
 import React from 'react'
 import { ResponsiveLine } from '@nivo/line'
-import { Box, useTheme } from '@mui/material'
+import { Box, useMediaQuery, useTheme } from '@mui/material'
 
-const LineCart = ({height}) => {
+const LineCart = ({isdashboard}) => {
+
+    const isMobile = useMediaQuery('(max-width: 480px)');
+  const isTablet = useMediaQuery('(min-width: 481px) and (max-width: 900px)');
+
+    const responsiveHeight = isMobile ? 250 : isTablet ? 350 :  450;
+     const boxWidth = isMobile ? '95%' : isTablet ? '90%' : '80%';
+     const responsiveMargin = isMobile
+    ? { top: 30, bottom: 30, left: 30, right: 10 }
+    : isTablet
+    ? { top: 40, bottom: 50, left: 50, right: 20 }
+    : { top: 50, bottom: 50, left:40, right: 40 };
+
 const theme=useTheme();
     const data=[
   {
@@ -265,7 +277,8 @@ const theme=useTheme();
   }
 ]
   return (
-     <Box height={height}  mx={"auto"} width={"100%"}>
+     <Box height={isdashboard?"280px":responsiveHeight}  mx={"auto"} width={boxWidth}    maxWidth="100vw"
+  overflow="hidden"  >
 
           <ResponsiveLine /* or Line for fixed dimensions */
         data={data}
@@ -379,7 +392,7 @@ const theme=useTheme();
         "tableCellValue": {}
     }
 }}
-        margin={{ top: 50,  bottom: 50, left: 10,right: 10 }}
+        margin={responsiveMargin}
         yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: true, reverse: false }}
         axisBottom={{ legend: 'transportation', legendOffset: 36 }}
         axisLeft={{ legend: 'count', legendOffset: -40 }}

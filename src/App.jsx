@@ -29,7 +29,7 @@ const App = () => {
         <Route path="/calender" element={<Calender/>}></Route>
         <Route path="/Faq" element={<Faq/>}></Route>
         <Route path="/barchart" element={<Barchart height={"75vh"}/>}></Route>
-        <Route path="/pie" element={<Pie legend={true} arch={true} height={"75vh"}     enableArcLabels={true} />}></Route>
+        <Route path="/pie" element={<Pie legend={true} arch={true} height={"75vh"} enableArcLabels={true}     />}></Route>
         <Route path="/line" element={<LineCart height={"65vh"}/>}></Route>
         <Route path="/geography" element={<Geography height={"75vh"}/>}></Route>
         

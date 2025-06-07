@@ -91,9 +91,18 @@ const Invoices = () => {
                   <Box sx={{ height:"600", width: '80%',mx:"auto" }}>
       <DataGrid
       checkboxSelection
-        rows={rows}
+                 rows={rows}
         columns={columns}
-        showToolbar
+        initialState={{
+          pagination: {
+            paginationModel: {
+              pageSize: 5,
+            },
+          },
+        }}
+        pageSizeOptions={[5]}
+        checkboxSelection
+        disableRowSelectionOnClick
       />
     </Box>
     </Box>

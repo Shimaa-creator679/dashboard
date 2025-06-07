@@ -2,7 +2,7 @@ import React from 'react'
 import { DataGrid } from '@mui/x-data-grid';
 import Box from '@mui/material/Box';
 
-import { Typography, useTheme } from '@mui/material';
+import { Typography, useMediaQuery, useTheme } from '@mui/material';
 import Header from '../shared/Header';
 
 
@@ -23,6 +23,9 @@ const rows = [
 
 
 const Team = () => {
+
+ 
+  
 
   
   const theme=useTheme();
@@ -90,22 +93,35 @@ const columns = [
   },
 ];
 
+  const isMobile = useMediaQuery("(max-width:600px)");
+  const isTablet = useMediaQuery("(max-width:900px)");
 
+  const responsiveHeight = isMobile ? 400 : isTablet ? 500 : 600;
 
 
   return (
-    <div>
+    <Box sx={{width:"100%"}}>
 
     <Header title={"Team"} subtitle={"Manage your team members"}/>
 
-        <Box sx={{ height:"600", width: '80%',mx:"auto" }}>
+        <Box sx={{ height:responsiveHeight, width:"100%"}}>
       <DataGrid
-        rows={rows}
+      rows={rows}
         columns={columns}
+        initialState={{
+          pagination: {
+            paginationModel: {
+              pageSize: 5,
+            },
+          },
+        }}
+        pageSizeOptions={[5]}
+        checkboxSelection
+        disableRowSelectionOnClick
       
       />
     </Box>
-    </div>
+    </Box>
   )
 }
 

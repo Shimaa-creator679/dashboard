@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { ResponsiveMarimekko } from '@nivo/marimekko'
-import { Box, useTheme } from '@mui/material'
+import { Box, useMediaQuery, useTheme } from '@mui/material'
 
 
  const data=[
@@ -49,10 +49,20 @@ import { Box, useTheme } from '@mui/material'
 
 const Barchart = ({height}) => {
 
+      const isMobile = useMediaQuery('(max-width:600px)');
+  const isTablet = useMediaQuery('(max-width:900px)');
+
+   const responsiveMargin = isMobile
+    ? { top: 30, bottom: 80, left: 30, right: 40 }
+    : isTablet
+    ? { top: 40, bottom: 90, left: 30, right: 40 }
+    : { top: 50, bottom: 100, left: 40, right: 40 };
+      const legendItemWidth = isMobile ? 70 : isTablet ? 100 : 140;
+
     const theme=useTheme();
   return (
 
-    <Box height={height}  mx={"auto"} width={"100%"}>
+    <Box height={height}  mx={"auto"} width={"100%"} maxWidth="100vw" overflow="hidden" >
      <ResponsiveMarimekko /* or Marimekko for fixed dimensions */
         data={data}
 
@@ -191,7 +201,7 @@ const Barchart = ({height}) => {
         axisRight={{}}
         axisBottom={{ legend: 'participation', legendOffset: 36 }}
         axisLeft={{ legend: 'opinions', legendOffset: -40 }}
-        margin={{ top: 40,  bottom: 100, left: 40 ,right: 40 }}
+        margin={responsiveMargin}
 
         colors={{ scheme: 'pastel1' }}
         borderColor={{ from: 'color', modifiers: [['darker', 0.2]] }}
@@ -200,7 +210,7 @@ const Barchart = ({height}) => {
                 anchor: 'bottom',
                 direction: 'row',
                 translateY: 80,
-                itemWidth: 140,
+                itemWidth: legendItemWidth,
                 itemHeight: 18,
                 itemDirection: 'right-to-left'
             }

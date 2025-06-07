@@ -30,7 +30,7 @@ const Row2 = () => {
 
 
 
-            <LineCart height={"280px"}/>
+            <LineCart  isdashboard={true}/>
 
         </Paper>
 

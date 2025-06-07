@@ -60,7 +60,7 @@ const darkTheme = createTheme({
 
   return (
      
-    <Box sx={{ display: 'flex' }} >
+    <Box sx={{ display: 'flex' ,width:"100%" }}  >
    
 
       
@@ -70,7 +70,14 @@ const darkTheme = createTheme({
 
 
 <Sidebar open={open} handleDrawerClose={handleDrawerClose}  />
- <Box component="main" sx={{ width: "100%", p: 3,}} >
+
+
+ <Box component="main" sx={{
+            flexGrow: 1,
+         p:2,
+            width: '100%',
+            overflowX: 'hidden',
+          }} >
      
         <DrawerHeader />
         <Outlet/>
